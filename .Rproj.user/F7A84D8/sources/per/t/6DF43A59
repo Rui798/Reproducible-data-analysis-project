@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1589856482919.000,
+    "dirty" : false,
+    "encoding" : "ISO-8859-2",
+    "folds" : "",
+    "hash" : "3572822241",
+    "id" : "6DF43A59",
+    "lastKnownWriteTime" : 1589487775,
+    "last_content_update" : 1589487775,
+    "path" : "C:/Users/Rui/Desktop/colors.R",
+    "project_path" : null,
+    "properties" : {
+        "cursorPosition" : "4,221",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

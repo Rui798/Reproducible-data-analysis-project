@@ -1,0 +1,9 @@
+{
+    "path" : "~/data/Reproducible-data-analysis-project/data/raw",
+    "sortOrder" : [
+        {
+            "ascending" : true,
+            "columnIndex" : 2
+        }
+    ]
+}
