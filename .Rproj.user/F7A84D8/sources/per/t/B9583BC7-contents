@@ -20,13 +20,13 @@ t_st2 <- rename(t_st2, FGp = `FG%`, x3P = `3P`, x3PA = `3PA`, x3Pp = `3P%`, x2P 
 which(is.na(p_sal), arr.ind = TRUE)
 p_sal<- select(p_sal, player_id, player_name, salary)
 sum(is.na(p_sal))
-write_csv(p_sal,"data/processed/1_2018-19_nba_player_salaries_no_na.csv")
+write_csv(p_sal,"data/processed/1_2018-19_nba_player_salaries.csv")
 
 # delet missing value in team statistics 1(t_st1)
 which(is.na(t_st1), arr.ind = TRUE)
 t_st1<- select(t_st1, -c(X23:25))
 sum(is.na(t_st1))
-write_csv(t_st1,"data/processed/1_2018-19_nba_team_statistics_1_no_na.csv")
+write_csv(t_st1,"data/processed/1_2018-19_nba_team_statistics_1.csv")
 
 #deal missing values in player statistics (p_st)
 sum(is.na(p_st))
@@ -35,6 +35,16 @@ naniar::vis_miss(p_st)
 p_st <- replace_na(p_st,list(FGp = "0", x3Pp = "0", x2Pp = "0", eFGp = "0", FTp = "0" ))
 sum(is.na(p_st))
 write_csv(t_st1,"data/processed/1_2018-19_nba_player_statistics.csv")
+
+# change "salary"'s class (payroll)
+payroll$salary <- str_remove_all(payroll$salary, "\\$")
+payroll$salary <- str_remove_all(payroll$salary, "\\,")
+payroll$salary <- str_remove_all(payroll$salary, "\\,")
+payroll$salary <- as.numeric(payroll$salary)
+write_csv(payroll,"data/processed/1_2019-20_nba_team-payroll.csv")
+
+write_csv(t_st2,"data/processed/1_2018-19_nba_team_statistics_2.csv")
+
 
 # find the duplications in player statistics (p_st)
 p_st_d <- p_st %>% 

@@ -5,15 +5,15 @@
     "dirty" : false,
     "encoding" : "ISO-8859-2",
     "folds" : "",
-    "hash" : "3560830739",
+    "hash" : "2591253418",
     "id" : "B9583BC7",
-    "lastKnownWriteTime" : 1590112713,
-    "last_content_update" : 1590112713138,
+    "lastKnownWriteTime" : 1590117917,
+    "last_content_update" : 1590117917074,
     "path" : "~/data/Reproducible-data-analysis-project/R/1_process_raw.R",
     "project_path" : "R/1_process_raw.R",
     "properties" : {
-        "cursorPosition" : "44,0",
-        "scrollLine" : "31"
+        "cursorPosition" : "12,55",
+        "scrollLine" : "0"
     },
     "read_only" : false,
     "read_only_alternatives" : [
