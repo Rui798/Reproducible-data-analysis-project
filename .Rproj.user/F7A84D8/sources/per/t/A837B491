@@ -1,24 +1,24 @@
 {
     "collab_server" : "",
     "contents" : "",
-    "created" : 1589858408391.000,
+    "created" : 1590187781931.000,
     "dirty" : false,
     "encoding" : "ISO-8859-2",
     "folds" : "",
-    "hash" : "2591253418",
-    "id" : "B9583BC7",
-    "lastKnownWriteTime" : 1590117917,
-    "last_content_update" : 1590117917074,
+    "hash" : "859522971",
+    "id" : "A837B491",
+    "lastKnownWriteTime" : 1590194477,
+    "last_content_update" : 1590194477519,
     "path" : "~/data/Reproducible-data-analysis-project/R/1_process_raw.R",
     "project_path" : "R/1_process_raw.R",
     "properties" : {
-        "cursorPosition" : "12,55",
-        "scrollLine" : "0"
+        "cursorPosition" : "81,22",
+        "scrollLine" : "75"
     },
     "read_only" : false,
     "read_only_alternatives" : [
     ],
-    "relative_order" : 2,
+    "relative_order" : 1,
     "source_on_save" : false,
     "source_window" : "",
     "type" : "r_source"
