@@ -2,9 +2,7 @@ library(tidyverse)
 library(dplyr)
 library(ggplot2)
 library(broom)
-library(readxl)
-library(stringi)
-library(knitr)
+
 
 # Read and save all data in R
 p_st <- read_csv("data/raw/2018-19_nba_player_statistics.csv")
@@ -52,10 +50,19 @@ payroll$salary <- str_remove_all(payroll$salary, "\\,")
 payroll$salary <- str_remove_all(payroll$salary, "\\,")
 payroll$salary <- as.numeric(payroll$salary)
 
+
 # Adjust players' name
 p_st$player_name <- p_st$player_name %>%
   stringi::stri_trans_general("Latin-ASCII") %>%
-  stringr::str_replace_all(pattern = "\\.", replacement = "")
+  stringr::str_replace_all(pattern = "\\.", replacement = "")%>%
+  stringr::str_replace_all(pattern = "\\-", replacement = "")%>%
+  stringr::str_replace_all(pattern = "\\'", replacement = "")
+
+p_sal$player_name <- p_sal$player_name %>%
+  stringi::stri_trans_general("Latin-ASCII") %>%
+  stringr::str_replace_all(pattern = "\\.", replacement = "")%>%
+  stringr::str_replace_all(pattern = "\\-", replacement = "")%>%
+  stringr::str_replace_all(pattern = "\\'", replacement = "")
 
 # 3- Dealing missing value
 
@@ -92,8 +99,7 @@ sum(is.na(t_st2))
 #4- Deal duplications in player statistics
 # Find the players who played in mutliple teams in one season (p_st)
 p_st <-p_st %>%
-  group_by(player_name, Pos) %>% 
-  summarise_each(funs(sum), 3:27)
+  distinct(player_name, .keep_all = TRUE)
 
 # write new dataframes into csv.
 
@@ -103,8 +109,17 @@ write_csv(p_st,"data/processed/1_2018-19_nba_player_statistics.csv")
 write_csv(t_st1,"data/processed/1_2018-19_nba_team_statistics_1.csv")
 write_csv(t_st2,"data/processed/1_2018-19_nba_team_statistics_2.csv")
 
-#Explotry Data
+#Combine players' data
+p <- inner_join(x = p_st, y = p_sal, 
+                by = "player_name") 
+p <- select(p, -c(GS, player_id))
 
+write_csv(p,"data/processed/All_Players_Infor.csv")
 
-
-
+#Combine teams' data
+t <- t %>%
+  full_join(x = t_st1, y = t_st2,
+               by = c("Team")) %>%
+  select(-c(Rk.x,Rk.y,G,MP))
+sum(is.na(t))
+write_csv(t,"data/processed/All_Teams_Infor.csv")
