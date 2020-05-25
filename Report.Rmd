@@ -9,4 +9,16 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## 
+## Data Source
+Statistics from the 2018-19 NBA season.
+  
+Total Statistics for Individual NBA Players: '2018-19_nba_player_statistics.csv'  sourced from ^[basketball-reference.com][basketball-reference.com](https://www.basketball-reference.com/leagues/NBA_2019_totals.html)
+
+Salary for Individual Players (2018-19 season) : '2018-19_nba_player-salaries.csv'sourced from ^[hoopshype.com/salaries][hoopshype.com/salaries](https://hoopshype.com/salaries/)
+
+Team Payroll Budget for the 2019-20 NBA season: '2019-20_nba_team-payroll.csv' sourced from ^[hoopshype.com/salaries][hoopshype.com/salaries](https://hoopshype.com/salaries/)
+
+Miscellaneous Team Statistics: '2018-19_nba_team-statistics_1.csv' sourced from ^[basketball-reference.com][basketball-reference.com](https://www.basketball-reference.com/leagues/NBA_2019.html)
+
+Total Team Statistics: '2018-19_nba_team-statistics_2.csv' sourced from ^[basketball-reference.com][basketball-reference.com](https://www.basketball-reference.com/leagues/NBA_2019.html)
+
