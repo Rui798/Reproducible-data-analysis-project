@@ -120,6 +120,6 @@ write_csv(p,"data/processed/All_Players_Infor.csv")
 t <- t %>%
   full_join(x = t_st1, y = t_st2,
                by = c("Team")) %>%
-  select(-c(Rk.x,Rk.y,G,MP))
+  select(-c(Rk.x,Rk.y,MP))
 sum(is.na(t))
 write_csv(t,"data/processed/All_Teams_Infor.csv")
