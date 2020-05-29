@@ -52,7 +52,7 @@ player1 %>% group_by(Pos) %>%
 
 player1%>% 
   group_by(Pos)%>%
-  ggplot(aes( PTS_Per_G, TRB_Per_G,color = Pos, shape = Pos)) +
+  ggplot(aes(TRB_Per_G,PTS_Per_G,color = Pos, shape = Pos)) +
   geom_point() +
   geom_smooth(method = "lm") 
 
@@ -70,7 +70,7 @@ player1 %>% group_by(Pos) %>%
 
 player1%>% 
   group_by(Pos)%>%
-  ggplot(aes( PTS_Per_G, AST_Per_G,color = Pos, shape = Pos)) +
+  ggplot(aes( AST_Per_G,PTS_Per_G,color = Pos, shape = Pos)) +
   geom_point() +
   geom_smooth(method = "lm") 
 
@@ -88,7 +88,7 @@ player1 %>% group_by(Pos) %>%
 
 player1%>% 
   group_by(Pos)%>%
-  ggplot(aes( PTS_Per_G, STL_Per_G,color = Pos, shape = Pos)) +
+  ggplot(aes(STL_Per_G,PTS_Per_G,color = Pos, shape = Pos)) +
   geom_point() +
   geom_smooth(method = "lm") 
 
@@ -143,4 +143,5 @@ player1 %>% group_by(Pos) %>%
 
 write_csv(x = player1, path = "data/processed/Player_Candidate.csv") 
 #To facilitate modeling and regression
+
 

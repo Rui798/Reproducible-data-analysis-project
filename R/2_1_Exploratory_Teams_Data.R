@@ -20,6 +20,8 @@ team <- team%>%
   select(-c(ORB:PTS,G)) %>%
   select(-c(FG,FGA,x3P,x3PA,x2P,x2PA,FT,FTA))
 
+write_csv(x = team, path = "data/processed/All_Teams_Infor_Per_G.csv") 
+
 #2-Find the relationships between wins and some factors.
 
 # 2-1 The relationship between wins and 3 points shooting.
@@ -147,10 +149,6 @@ team %>%
   geom_smooth(method = "lm") 
 
 cor(team$PTS_Per_G, team$W, method = "pearson")
-###The teams get more Points Per Game is more likely to win.
-#Since the Pearson coefficient is 0.661, the Points has moderate impact on wins.
-
-
-
-
+###The teams get more Points Per Game means more chances to win.
+#Since the Pearson coefficient is 0.661, the Points has strong impact on wins.
 
