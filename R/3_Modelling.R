@@ -135,18 +135,34 @@ ggplot(data = NULL, aes(x = fitted, y = res)) +
   geom_point(colour = "dodgerblue") + 
   geom_smooth(se = FALSE, colour = "orange")
 
-#The data shows homoscedasticity since 
+#The data shows homoscedasticity since the residuals are randomly distributed.
 
-# 9- 
-  
-  
-  
-  
-  
-  
-  
+# 9- Normality of Residuals
+
+ggplot(data = NULL, aes(sample = res)) + 
+  stat_qq() + 
+  stat_qq_line()
+#The residuals are normally distributed.
+
+# 10- Multicollinearity
+
 pairs(formula = ~PTS_Per_G + STL_Per_G + AST_Per_G + TRB_Per_G + BLK_Per_G +TOV_Per_G, data = team)
+sqrt(car::vif(fit_t))
+
+# From the plot and VIF("figs/3_Modelling_Multicollinearity") we can see 
+##that there is not multicollinearity between the explanatory variables.
 
 
-exp_w <- predict(fit_t)
-head(exp_w)
+# 11- Model Testing
+
+team <- team %>%
+  mutate(exp_t_w = predict(fit_t))
+
+ggplot(team, aes(exp_t_w, W, label = Team)) + 
+  geom_point(colour = "dodgerblue") + 
+  geom_text(nudge_x = 2, nudge_y = 1.5, cex = 2.5) + 
+  geom_abline( colour = "red")+
+  xlab("Expect Wins")+
+  ylab("Wins")
+
+                     
