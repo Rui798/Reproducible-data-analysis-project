@@ -20,7 +20,7 @@ team <- team%>%
   select(-c(ORB:PTS,G)) %>%
   select(-c(FG,FGA,x3P,x3PA,x2P,x2PA,FT,FTA))
 
-write_csv(x = team, path = "data/processed/All_Teams_Infor_Per_G.csv") 
+write_csv(x = team, path = "data/processed/3_All_Teams_Infor_Per_G.csv") 
 
 #2-Find the relationships between wins and some factors.
 

@@ -141,7 +141,7 @@ player1 %>% group_by(Pos) %>%
 
 #3 Export new tables
 
-write_csv(x = player1, path = "data/processed/Player_Candidate.csv") 
+write_csv(x = player1, path = "data/processed/3_Player_Candidate.csv") 
 #To facilitate modeling and regression
 
 
