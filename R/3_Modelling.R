@@ -4,7 +4,6 @@ library(car)
 library(ggplot2)
 
 team <- read_csv( "data/processed/3_All_Teams_Infor_Per_G.csv" )
-player1 <- read_csv("data/processed/3_Player_Candidate.csv") 
 
 # 1-Bulid a Multiple Linear Model
 
@@ -165,4 +164,136 @@ ggplot(team, aes(exp_t_w, W, label = Team)) +
   xlab("Expect Wins")+
   ylab("Wins")
 
-                     
+# Apply Model [Player]
+
+player1 <- read_csv("data/processed/3_Player_Candidate.csv") 
+
+# 12- Adjust players' exploratory variables
+player1$PTS_Per_G = player1$PTS_Per_G*10
+player1$STL_Per_G = player1$STL_Per_G*10
+player1$AST_Per_G = player1$AST_Per_G*10
+player1$TRB_Per_G = player1$TRB_Per_G*10
+player1$BLK_Per_G = player1$BLK_Per_G*10
+player1$TOV_Per_G = player1$TOV_Per_G*10
+
+player1$salary = player1$salary/1000000
+
+# Since all exploratory variables in the team are the total number of teams, 
+##we need to adjust the exploratory variables of players.
+##Generally, a team will have 10 players participating in a game
+
+# 13- Merge exp_t_w with players data
+player1 <- player1 %>%
+  mutate(exp_t_w = predict(fit_t, newdata = player1),
+         exp_t_wA = exp_t_w * (60.8/370.2)) #Adjust players' expected wins index according to the teams' index.
+
+player2<- player1 %>%
+  select(player_name, Pos, salary, exp_t_wA) %>% 
+  arrange(desc(exp_t_wA), salary) %>%
+  filter(exp_t_wA >= 21)
+
+write_csv(player2, "data/processed/4_Regression_Player2.csv")
+
+#The lowest expect win of all teams is 21.05, 
+##which filters out the players who below this standard.
+
+# 14- Divide Players by Positions
+
+list(player2$Pos)
+
+C <- player2 %>%
+  filter(Pos == "C")
+PF <- player2 %>%
+  filter(Pos == "PF") 
+PG <- player2 %>%
+  filter(Pos == "PG")
+SF <- player2 %>%
+  filter(Pos == "SF")
+SG <- player2 %>%
+  filter(Pos == "SG")
+
+##since we need 5 staring players for each position. We need to do regress individually.
+
+###Staring Player of Center
+
+head(C)
+
+C %>%
+  ggplot(aes(x = salary, y = exp_t_wA, color = player_name)) +
+  geom_point() + 
+  geom_text(aes(label=ifelse(exp_t_wA > 45,as.character(player_name),'')),
+            nudge_x = 1,nudge_y = 2) +
+  theme(legend.position = "none")+
+  xlab("Salary (Millions)") +
+  ylab("Expected Wins")
+
+#Staring Player of Power Forward
+head(PF)
+
+PF %>%
+  ggplot(aes(x = salary, y = exp_t_wA, color = player_name)) +
+  geom_point() + 
+  geom_text(aes(label=ifelse(exp_t_wA > 30,as.character(player_name),'')),
+            nudge_x = 2,nudge_y = 2) +
+  theme(legend.position = "none")+
+  xlab("Salary (Millions)") +
+  ylab("Expected Wins")
+
+#Staring Player of Small Forward
+head(SF)
+
+SF %>%
+  ggplot(aes(x = salary, y = exp_t_wA, color = player_name)) +
+  geom_point() + 
+  geom_text(aes(label=ifelse(exp_t_wA > 33,as.character(player_name),'')),
+            nudge_x = -1) +
+  theme(legend.position = "none")+
+  xlab("Salary (Millions)") +
+  ylab("Expected Wins")
+
+#Staring Player of Point Guard
+head(PG)
+
+PG %>%
+  ggplot(aes(x = salary, y = exp_t_wA, color = player_name)) +
+  geom_point() + 
+  geom_text(aes(label=ifelse(exp_t_wA > 30,as.character(player_name),'')),
+            nudge_x = -3) +
+  theme(legend.position = "none")+
+  xlab("Salary (Millions)") +
+  ylab("Expected Wins")
+
+
+#Staring Player of Shooting Guard
+head(SG)
+
+SG %>%
+  ggplot(aes(x = salary, y = exp_t_wA, color = player_name)) +
+  geom_point() + 
+  geom_text(aes(label=ifelse(exp_t_wA > 22.3 ,as.character(player_name),'')),
+            nudge_x = -2) +
+  theme(legend.position = "none")+
+  xlab("Salary (Millions)") +
+  ylab("Expected Wins")
+
+# Generate The Final Player List
+
+Final_L <- player2%>%
+  filter(player_name%in% c("KarlAnthony Towns",
+                          "John Collins",
+                          "Kawhi Leonard",
+                          "James Harden",
+                          "Luka Doncic"))%>%
+  arrange(desc(salary))
+
+write_csv(Final_L,"data/processed/final_player_list.csv")
+
+
+
+
+
+
+
+
+
+         

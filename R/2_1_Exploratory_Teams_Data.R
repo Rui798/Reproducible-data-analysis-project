@@ -87,7 +87,7 @@ cor(team$TSp, team$W, method = "pearson")
 ##Since the Pearson coefficient of "Effective Field Goal Percentage" has the most strongly related to the game result,
 ##this item will be an important reference when selecting star players.
 
-# 2-6 The relationship between wins and Turnover Percentage Per Game.
+# 2-6 The relationship between wins and Turnover Per Game.
 team %>% 
   ggplot(aes(TOV_Per_G, W)) +
   geom_point() +
@@ -98,10 +98,8 @@ mean(team$TOV_Per_G)
 sd(team$TOV_Per_G)
 
 #The Turnover Percentage Per Game has weak impact on wins.
-#But overall, the fewer turnover, the greater the chance of winning. 
 ##In addition, most teams have about 14 turnovers per game, with a standard deviation of 1.03, 
 ##which indicate the number of turnovers of each team are similar. 
-##Therefore, players who have made too many mistakes should be ruled out when selecting players. 
 
 # 2-7 The relationship between wins and Total Rebounds Per Game.
 team %>% 
