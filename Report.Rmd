@@ -40,6 +40,19 @@ output:
 
 ## Method
 
+In this data analysis, firstly the data is read, tidied and transformed by *R Studio*. The processed data is then classified as the team data and the individual player data. 
+
+Secondly, by the exploratory data analysis, the connections and relations of the data are found. 
+
+Thirdly, the model is built regarding the found linear relationships, in order to perform data regressions and to find suitable players.
+
+By exploratory data analysis, the important factors (variables) which influence the game outcomes are found. After analyzing, **Turnovers Per Game, Total Rebounds Per Game, Assists Per Game, Steals Per Game, Blocks Per Game, Points Per Game** have linear relationships with **the number of Wins**.
+
+As a result, a multiple regression model is built, by choosing wins as a response variable, and choosing the above 6 terms as exploratory variables. The model is used for adjusted players' data, and an regression is performed.
+
+Since the players' data is individual data, while the team data is the overall playing players' data of each games, the 6 exploratory varibles are multiplied by 10 in the players' data as an adjustment. By performing a regression for the adjusted data, the "players' expected wins" obtained is compared with the "teams' expected wins", in order to find a reasonable ratio $ExpW _t/ExpW_p$, then to adjust the players' expected wins index. 
+
+The *adjusted expected wins index* and *players' salary* are combined to find the most suitable player for Chicago Bulls.
 
 ---
 
@@ -102,7 +115,7 @@ knitr::kable(head(C))
 ```
 
 
-![C_Expected_Wins](figs/C_expected_wins.png)
+![ ](figs/C_expected_wins.png)
 
 From the charts and figures, it can be found that the most skilled center is Anthony Davis, while his salary is also quite high.
 
@@ -125,11 +138,11 @@ PF %>%
   ylab("Expected Wins")
 ```
 
-Giannis Antetokounmpo's Adjusted Expected Wins Index is the highest in power forward,and is 60% higher than the second place (John Collins). 
+Giannis Antetokounmpo's Adjusted Expected Wins Index is the highest in the power forward candidates,and is 60% higher than the second place (John Collins). 
 
-But our goal is 26 out of 30, so we do not need to choose a player who with the highest ability. In addition, his salary is too high to our team.
+But our goal is *Ranked 26 out of 30*, so we do not need to choose a player with the highest ability. In addition, his salary is too high to our team.
 
-Therefore, we can choose **John Collins** who is in second place. He is good enough for our goal in 2019-2020 Season (26 out of 30), and the salary is also affordable.
+Therefore, I recommend **John Collins** as our PF. He is good enough for our goal in 2019-2020 Season (26 out of 30), and his salary is also affordable for us.
 
 ---
 
@@ -190,7 +203,9 @@ His expected wins index is 22.6, but his salary is only 6.57 million.
 
 ---
 
-## Final Staring Players List
+## Summary & Recommendation
+
+### Final Staring Players List
 
 ```{r final_list}
 
@@ -200,17 +215,26 @@ knitr::kable(final)
 ```
 
 
-I recommend these five players as Chicago Bulls staring players in new season. 
+I recommend ***James Harden(PG), Kawhi Leonard(SF), KarlAnthony Towns(C), Luka Doncic(SG), John Collins(PF)*** these five players as Chicago Bulls' staring players in the upcoming season. 
 
-There is one player in each position, and their ***total salary*** is ***70.39 million*** , accounting for ***59.3%*** of the total budget. 
+The ***total salary*** of these five players is ***$70.39 million*** , accounting for ***59.3%*** of the total budget *($118 million)*. So, there still left sufficient budget for filling the full team roster. 
 
-There is enough budget for filling the full team roster. And these players deserve these salaries based on their abilities.
-
-James Harden (PG) has the highest salary among these five players, and I think he is well worth it.
+*James Harden (PG)* has the highest salary among these five players, and he is well worth it.
 
 A good point guard is essential for a team. They are regarded as leaders on the field [Wikipedia](https://en.wikipedia.org/wiki/Basketball_positions). 
 
-They can mobilize all players, implement tactics and provide assists, and they also can offense and score by themselves. In addition, having a good point guard can facilitate other players have a clearer idea during the games. Therefore, it is worth to spent more money on this position.
+They can mobilize all players, implement tactics and provide assists, and they also can offense and score by themselves. In addition, a good point guard can facilitate other players to have clearer minds during the games. Therefore, it is worth to spent more money on this position.
+
+In the previous analysis, we found that in order to achieve the desired goal **rated 26 out of 30**, the expected wins should be about **33.10**. Comparing the expected wins of these five players, we can find that their average expected wins index is around **35.30**, so they are able to help Chicago Bulls achieve their goals.
+
+---
+
+<center>
+![ ](figs/UC_Logo.png){width=400px}
+
+</center>
+
+
 
 
 
