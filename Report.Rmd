@@ -166,11 +166,7 @@ PG %>%
   ylab("Expected Wins")
 ```
 
-**James Harden** is the player with the highest adjusted expected wins index in the power guard, and also the most cost-effective PG who can assist the team to achieve goal. 
-
-A good shooting guard is essential for a team. They are regarded as leaders on the field [Wikipedia](https://en.wikipedia.org/wiki/Basketball_positions). 
-
-They can mobilize all players, implement tactics and provide assists, and they also can offense and score by themselves. In addition, having a good shooting guard can facilitate other players have a clearer idea during the games. Therefore, it is worth to spent more money on this position.
+**James Harden** is the player with the highest adjusted expected wins index in the point guard, and also the most cost-effective PG who can assist the team to achieve goal. 
 
 ---
 
@@ -209,6 +205,12 @@ I recommend these five players as Chicago Bulls staring players in new season.
 There is one player in each position, and their ***total salary*** is ***70.39 million*** , accounting for ***59.3%*** of the total budget. 
 
 There is enough budget for filling the full team roster. And these players deserve these salaries based on their abilities.
+
+James Harden (PG) has the highest salary among these five players, and I think he is well worth it.
+
+A good point guard is essential for a team. They are regarded as leaders on the field [Wikipedia](https://en.wikipedia.org/wiki/Basketball_positions). 
+
+They can mobilize all players, implement tactics and provide assists, and they also can offense and score by themselves. In addition, having a good point guard can facilitate other players have a clearer idea during the games. Therefore, it is worth to spent more money on this position.
 
 
 
